@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kubernetes Labs &mdash; juphub 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Monitoring K8s" href="monitor.html" />
+    <link rel="prev" title="CloudFormation Deep Dive" href="cftdeep.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> juphub
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="charter.html">Project Charter “Elastic K8s Jupyter Hubs”</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#introduction">Introduction:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#business-case-the-big-why">Business Case;  The BIG WHY!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#project-statement">Project Statement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#concept">Concept</a></li>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#scope">Scope:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#success-criteria">Success Criteria:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#major-milestones">Major Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#major-requirements">Major Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#deliverables">Deliverables:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="charter.html#companion-items">Companion Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="charter.html#list-of-deliverables">List of deliverables:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#budget">Budget:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#schedule-or-milestones">Schedule or Milestones:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#constraints-and-assumptions">Constraints and Assumptions:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#stakeholders">Stakeholders</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#summary-of-risks">Summary of Risks:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#team-and-organization">Team and Organization:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#approvals">Approvals:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#scheduling-documents">Scheduling documents:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#communication-plan">Communication plan:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#primary-goal">Primary Goal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html#wbs">WBS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#little-hub">Little Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#pangeo-chs">Pangeo CHS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html#challenges">Challenges</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#kubernetes-is-a-wild-beast">Kubernetes is a wild beast!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-kubernetes-see-learningplan">Learn Kubernetes - see learningPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-helm">Learn Helm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-aws-cloudformation-templating">Learn AWS Cloudformation - templating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-chs">Learn CHS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-gitlab">Learn gitlab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#more-to-come">More to come</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="odchub.html">ODC Hub CHS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="odchub.html#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#iac">IAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#bootstrap">Bootstrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#setup-libraries">Setup libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#test-notebooks">Test notebooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="littlehub.html">Little Hub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#why">Why</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#steps-wbs">Steps/WBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#id1">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#iac-littlehub">IAC - littlehub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="littlehub.html#sizing">Sizing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="littlehub.html#instance-perspective">Instance Perspective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="littlehub.html#tables-now-work-well-thanks-tony">Tables now work well - Thanks Tony</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#install-jupyter-hub">Install Jupyter Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#configure-jupyter-hub">Configure Jupyter Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pangeoCHS.html">PANGEO JupyterHUB in CHS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#howto">Howto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#repos">Repos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#product-deployment-eks">Product Deployment EKS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#verify">Verify</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#bastion">Bastion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pangeoCHS.html#development-bastion">Development Bastion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#dashboard-see-notes">Dashboard -see notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#start-pangeo-cloudformation-helm">Start Pangeo Cloudformation/Helm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#repo">REPO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#howto-steps">Howto Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#these-are-the-ones">These are the ones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#shutting-eks-pangeo-down">Shutting EKS/Pangeo down</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#stacks-cloudformation">Stacks - Cloudformation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pangeoCHS.html#shutdown-pangeo-first">Shutdown Pangeo First</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pangeoCHS.html#now-shutdown-the-eks-autoscaling-k8s-stack">Now Shutdown the EKS Autoscaling K8s Stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cftdeep.html">CloudFormation Deep Dive</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cftdeep.html#eks-service">EKS - Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cftdeep.html#repo">Repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cftdeep.html#eks-yml">eks.yml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cftdeep.html#lots-of-flippin-resources">Lots of Flippin Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kubernetes Labs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#favorite-references">Favorite References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-an-eks-cluster">1. Setting Up an EKS Cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-chs-hosted-service">Using a CHS Hosted Service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-template">Running the Template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#future-wish-list-items">Future Wish List Items</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-the-k8s-cluster">2. Accessing the k8s cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tunneling-ssh">Tunneling ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#token-token-who-s-got-the-token">Token Token Who’s got the token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#services">2. Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ec2-docker-based-setup">1. EC2 + Docker Based Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-kubernetes-with-minikube">2. Install Kubernetes with Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-install-with-microk8s-and-snap-instead-in-an-aws-instance">2a. Install with MicroK8s and snap instead - in an AWS instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-kubernetes-in-ga-cloud-with-kops">3. Install Kubernetes in GA Cloud with kops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-3-tier-application-using-helm">4. Run a 3-tier application using Helm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-jupyter-notebooks-using-helm">5. Run jupyter Notebooks using Helm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zero-to-jupyterhub-using-microk8s">6. Zero to JupyterHub - using microk8s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="monitor.html">Monitoring K8s</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="monitor.html#ref">Ref</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="learningPlan.html">Learning Plan</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#books">Books</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#kubernetes-on-aws">Kubernetes on AWS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="learningPlan.html#overview-of-the-book">Overview of the Book</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#concepts">Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#helm">Helm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#helm-cheat">Helm Cheat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#helm-installation">Helm Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#helm-installing-a-chart">helm installing a chart</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="learningPlan.html#resource">Resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="learningPlan.html#ref">Ref</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#helm-values-yaml">Helm values.yaml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#excerpt">Excerpt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#helm-chart-yaml">Helm Chart.yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#helm-templates-directory">Helm templates directory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#service-yaml">service.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#deployment-yaml">deployment.yaml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#helm-helpers-and-rbac-more-to-come">Helm helpers and RBAC more to come …</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#kubeslate-helm-example">Kubeslate Helm Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#id1">Ref</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#steps">Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#remember-to-monitor-with-grafana">Remember to Monitor with Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#book-highlites-on-kubeslate">Book highlites on kubeslate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="learningPlan.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="learningPlan.html#microk8s">microk8s</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#restarting">Restarting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learningPlan.html#id2">Ref</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="k8s/index.html">K8S Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="k8s/k8s_intro.html">Kubernetes Intro</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#what-is-k8s">What is k8s?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#why-k8s">WHY K8S?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#declarative">Declarative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#myths">Myths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#compare-swarm">Compare Swarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#k8s-architecture">k8s Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#references">References</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/k8s_intro.html#what-is-kubernetes-kubernetes-introduction-kubernetes-tutorial-for-beginners-edureka">What Is Kubernetes | Kubernetes Introduction | Kubernetes Tutorial For Beginners | Edureka</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/minikube.html">Minikube Up and Running</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#jose-host">jose host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#virtual-box">Virtual Box</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#install">Install</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#kubectl">kubectl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#minikube">minikube</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#starting">STARTING</a></li>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#kubctl-context">kubctl context</a></li>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#sample-commands">Sample commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#minikube-docker-local-to-vm">minikube docker local to VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#create-a-makefile">Create a Makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#nodeport">NodePort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#kubectl-run">kubectl run</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/cookbook.html">Examining My Cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#context">Context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#kubectl">Kubectl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#dashboard">Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#docker-level">Docker Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#exec-containers">Exec Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/helm.html">Helm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/helm.html#understanding-helm">Understanding Helm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/helm.html#docker-compose-similar">Docker Compose Similar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/k8sAWS.html">Book Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8sAWS.html#docker-containers">Docker Containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/k8sAWS.html#container-engines">Container Engines</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8sAWS.html#k8s-lexicon">K8s lexicon</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">juphub</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Kubernetes Labs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/labs.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kubernetes-labs">
+<h1>Kubernetes Labs<a class="headerlink" href="#kubernetes-labs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="favorite-references">
+<h2>Favorite References<a class="headerlink" href="#favorite-references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Kubernetes - Services Explained</p>
+<ul class="simple">
+<li><p>https://www.youtube.com/watch?v=5lzUpDtmWgM</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>https://esip.pangeo.io/user/tonybutzer/lab?</p></li>
+<li><p>https://github.com/pangeo-data/pangeo-cloud-federation</p></li>
+<li><p>https://github.com/frontiersi/datacube-jupyterhub-kubernetes</p></li>
+<li><p>https://zero-to-jupyterhub.readthedocs.io/en/latest/</p></li>
+<li><p>https://kubernetes.io/docs/reference/kubectl/cheatsheet/</p></li>
+<li><p>https://gardener.cloud/050-tutorials/content/howto/ssh-into-node/</p></li>
+</ul>
+</div>
+<div class="section" id="setting-up-an-eks-cluster">
+<h2>1. Setting Up an EKS Cluster<a class="headerlink" href="#setting-up-an-eks-cluster" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-a-chs-hosted-service">
+<h3>Using a CHS Hosted Service<a class="headerlink" href="#using-a-chs-hosted-service" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="running-the-template">
+<h4>Running the Template<a class="headerlink" href="#running-the-template" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Study the repo here:</p>
+<ul class="simple">
+<li><p>https://code.chs.usgs.gov/CHS-IaC/baseline/aws-service-catalog/custom-sc/eks</p></li>
+<li><p>https://code.chs.usgs.gov/CHS-IaC/baseline/aws-service-catalog/custom-sc/eks/blob/master/README.md</p></li>
+<li><p>30 Minutes to spin up - maybe even a little longer</p></li>
+<li><p><em>Attention</em> –&gt; read the section on CHS private IP space plus service modifications to instruct the loadBalancer to use private IP spaces.</p></li>
+</ul>
+</li>
+<li><p>AWS Console deploy stack</p>
+<ul class="simple">
+<li><p>awsconole CHS</p>
+<ul>
+<li><p>search for products - click Products upper left - find EKS</p></li>
+<li><p>LAUNCH PRODUCT - Orange Button</p>
+<ul>
+<li><p>name the product</p></li>
+<li><p>select VPCs</p></li>
+<li><p>name the cluster</p></li>
+<li><p>Consider public control plane access?</p></li>
+<li><p>Auto Scaling</p></li>
+<li><p>Instance Types</p></li>
+<li><p>Number of persistent nodes</p></li>
+<li><p>Max number of nodes to autoscale too</p></li>
+<li><p>Node EBS size - default 20 MB</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="future-wish-list-items">
+<h3>Future Wish List Items<a class="headerlink" href="#future-wish-list-items" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>EFS or other external volume mapping</p></li>
+<li><p>Custom JupyterNotebook Containers or a radio button pick list like Pangeo[‘ESIP’]</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="accessing-the-k8s-cluster">
+<h2>2. Accessing the k8s cluster<a class="headerlink" href="#accessing-the-k8s-cluster" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Bastion Host</p>
+<ul class="simple">
+<li><p>allowing ssh via pub key and security group</p></li>
+</ul>
+</li>
+<li><p>k8s Dashboard</p>
+<ul class="simple">
+<li><p>https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">/</span><span class="n">dashboard</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mf">0.0</span><span class="o">-</span><span class="n">beta4</span><span class="o">/</span><span class="n">aio</span><span class="o">/</span><span class="n">deploy</span><span class="o">/</span><span class="n">recommended</span><span class="o">.</span><span class="n">yaml</span>
+
+<span class="n">kubectl</span> <span class="n">proxy</span>
+</pre></div>
+</div>
+<p>Kubectl will make Dashboard available at http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.</p>
+<div class="section" id="tunneling-ssh">
+<h3>Tunneling ssh<a class="headerlink" href="#tunneling-ssh" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ip=10.12.68.198
+ssh -L 8001:localhost:8001 ec2-user@$ip
+</pre></div>
+</div>
+</div>
+<div class="section" id="token-token-who-s-got-the-token">
+<h3>Token Token Who’s got the token<a class="headerlink" href="#token-token-who-s-got-the-token" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">create</span> <span class="n">serviceaccount</span> <span class="n">cluster</span><span class="o">-</span><span class="n">admin</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">sa</span>
+
+<span class="n">kubectl</span> <span class="n">create</span> <span class="n">clusterrolebinding</span> <span class="n">cluster</span><span class="o">-</span><span class="n">admin</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">sa</span> \
+  <span class="o">--</span><span class="n">clusterrole</span><span class="o">=</span><span class="n">cluster</span><span class="o">-</span><span class="n">admin</span> \
+  <span class="o">--</span><span class="n">serviceaccount</span><span class="o">=</span><span class="n">default</span><span class="p">:</span><span class="n">cluster</span><span class="o">-</span><span class="n">admin</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">sa</span>
+
+<span class="n">kubectl</span> <span class="n">get</span> <span class="n">secret</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">cluster</span><span class="o">-</span><span class="n">admin</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">sa</span>
+
+<span class="n">kubectl</span> <span class="n">describe</span> <span class="n">secret</span> <span class="n">cluster</span><span class="o">-</span><span class="n">admin</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">sa</span><span class="o">-</span><span class="n">token</span><span class="o">-</span><span class="mi">6</span><span class="n">xm8l</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="services">
+<h2>2. Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h2>
+<p>Kubernetes - Services Explained – https://www.youtube.com/watch?v=5lzUpDtmWgM</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tonybutzer/assets/master/juphub/node-port-diag.PNG" /></p>
+</div>
+<div class="section" id="ec2-docker-based-setup">
+<h2>1. EC2 + Docker Based Setup<a class="headerlink" href="#ec2-docker-based-setup" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>document here:</p></li>
+</ul>
+</div>
+<div class="section" id="install-kubernetes-with-minikube">
+<h2>2. Install Kubernetes with Minikube<a class="headerlink" href="#install-kubernetes-with-minikube" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="a-install-with-microk8s-and-snap-instead-in-an-aws-instance">
+<h2>2a. Install with MicroK8s and snap instead - in an AWS instance<a class="headerlink" href="#a-install-with-microk8s-and-snap-instead-in-an-aws-instance" title="Permalink to this headline">¶</a></h2>
+<p>https://towardsdatascience.com/key-kubernetes-commands-741fe61fde8</p>
+</div>
+<div class="section" id="install-kubernetes-in-ga-cloud-with-kops">
+<h2>3. Install Kubernetes in GA Cloud with kops<a class="headerlink" href="#install-kubernetes-in-ga-cloud-with-kops" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="run-a-3-tier-application-using-helm">
+<h2>4. Run a 3-tier application using Helm<a class="headerlink" href="#run-a-3-tier-application-using-helm" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>test Kompose to convert docker-compose to kubernetes</p></li>
+<li><p>follow a tutorial</p></li>
+<li><p>document the various ways to start and stop deployments/services</p></li>
+</ol>
+</div>
+<div class="section" id="run-jupyter-notebooks-using-helm">
+<h2>5. Run jupyter Notebooks using Helm<a class="headerlink" href="#run-jupyter-notebooks-using-helm" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="zero-to-jupyterhub-using-microk8s">
+<h2>6. Zero to JupyterHub - using microk8s<a class="headerlink" href="#zero-to-jupyterhub-using-microk8s" title="Permalink to this headline">¶</a></h2>
+<p>https://buildmedia.readthedocs.org/media/pdf/zero-to-jupyterhub/v0.4-doc/zero-to-jupyterhub.pdf</p>
+<ol class="simple">
+<li><p>helm version</p></li>
+<li><p>Install Helm</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get <span class="p">|</span> bash
+
+helm init
+
+helm version
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>config helm config file for JupyterHub - (YAML)</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="monitor.html" class="btn btn-neutral float-right" title="Monitoring K8s" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cftdeep.html" class="btn btn-neutral float-left" title="CloudFormation Deep Dive" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

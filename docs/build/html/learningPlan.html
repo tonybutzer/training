@@ -1,0 +1,762 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Learning Plan &mdash; juphub 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="K8S Details" href="k8s/index.html" />
+    <link rel="prev" title="Monitoring K8s" href="monitor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> juphub
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="charter.html">Project Charter “Elastic K8s Jupyter Hubs”</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#introduction">Introduction:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#business-case-the-big-why">Business Case;  The BIG WHY!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#project-statement">Project Statement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#concept">Concept</a></li>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#scope">Scope:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#success-criteria">Success Criteria:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#major-milestones">Major Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#major-requirements">Major Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#deliverables">Deliverables:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="charter.html#companion-items">Companion Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="charter.html#list-of-deliverables">List of deliverables:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#budget">Budget:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#schedule-or-milestones">Schedule or Milestones:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#constraints-and-assumptions">Constraints and Assumptions:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="charter.html#stakeholders">Stakeholders</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#summary-of-risks">Summary of Risks:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#team-and-organization">Team and Organization:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#approvals">Approvals:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#scheduling-documents">Scheduling documents:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charter.html#communication-plan">Communication plan:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#primary-goal">Primary Goal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html#wbs">WBS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#little-hub">Little Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#pangeo-chs">Pangeo CHS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html#challenges">Challenges</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#kubernetes-is-a-wild-beast">Kubernetes is a wild beast!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-kubernetes-see-learningplan">Learn Kubernetes - see learningPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-helm">Learn Helm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-aws-cloudformation-templating">Learn AWS Cloudformation - templating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-chs">Learn CHS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#learn-gitlab">Learn gitlab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#more-to-come">More to come</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="odchub.html">ODC Hub CHS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="odchub.html#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#iac">IAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#bootstrap">Bootstrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#setup-libraries">Setup libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odchub.html#test-notebooks">Test notebooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="littlehub.html">Little Hub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#why">Why</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#steps-wbs">Steps/WBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#id1">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#iac-littlehub">IAC - littlehub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="littlehub.html#sizing">Sizing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="littlehub.html#instance-perspective">Instance Perspective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="littlehub.html#tables-now-work-well-thanks-tony">Tables now work well - Thanks Tony</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#install-jupyter-hub">Install Jupyter Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="littlehub.html#configure-jupyter-hub">Configure Jupyter Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pangeoCHS.html">PANGEO JupyterHUB in CHS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#howto">Howto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#repos">Repos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#product-deployment-eks">Product Deployment EKS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#verify">Verify</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#bastion">Bastion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pangeoCHS.html#development-bastion">Development Bastion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#dashboard-see-notes">Dashboard -see notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#start-pangeo-cloudformation-helm">Start Pangeo Cloudformation/Helm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#repo">REPO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#howto-steps">Howto Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#these-are-the-ones">These are the ones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pangeoCHS.html#shutting-eks-pangeo-down">Shutting EKS/Pangeo down</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pangeoCHS.html#stacks-cloudformation">Stacks - Cloudformation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pangeoCHS.html#shutdown-pangeo-first">Shutdown Pangeo First</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pangeoCHS.html#now-shutdown-the-eks-autoscaling-k8s-stack">Now Shutdown the EKS Autoscaling K8s Stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cftdeep.html">CloudFormation Deep Dive</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cftdeep.html#eks-service">EKS - Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cftdeep.html#repo">Repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cftdeep.html#eks-yml">eks.yml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cftdeep.html#lots-of-flippin-resources">Lots of Flippin Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html">Kubernetes Labs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#favorite-references">Favorite References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#setting-up-an-eks-cluster">1. Setting Up an EKS Cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="labs.html#using-a-chs-hosted-service">Using a CHS Hosted Service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="labs.html#running-the-template">Running the Template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="labs.html#future-wish-list-items">Future Wish List Items</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#accessing-the-k8s-cluster">2. Accessing the k8s cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="labs.html#tunneling-ssh">Tunneling ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="labs.html#token-token-who-s-got-the-token">Token Token Who’s got the token</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#services">2. Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#ec2-docker-based-setup">1. EC2 + Docker Based Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#install-kubernetes-with-minikube">2. Install Kubernetes with Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#a-install-with-microk8s-and-snap-instead-in-an-aws-instance">2a. Install with MicroK8s and snap instead - in an AWS instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#install-kubernetes-in-ga-cloud-with-kops">3. Install Kubernetes in GA Cloud with kops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#run-a-3-tier-application-using-helm">4. Run a 3-tier application using Helm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#run-jupyter-notebooks-using-helm">5. Run jupyter Notebooks using Helm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labs.html#zero-to-jupyterhub-using-microk8s">6. Zero to JupyterHub - using microk8s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="monitor.html">Monitoring K8s</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="monitor.html#ref">Ref</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Learning Plan</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#books">Books</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes-on-aws">Kubernetes on AWS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-the-book">Overview of the Book</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#concepts">Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#helm">Helm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#helm-cheat">Helm Cheat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helm-installation">Helm Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helm-installing-a-chart">helm installing a chart</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resource">Resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ref">Ref</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#helm-values-yaml">Helm values.yaml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#excerpt">Excerpt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#helm-chart-yaml">Helm Chart.yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helm-templates-directory">Helm templates directory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#service-yaml">service.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deployment-yaml">deployment.yaml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#helm-helpers-and-rbac-more-to-come">Helm helpers and RBAC more to come …</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kubeslate-helm-example">Kubeslate Helm Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Ref</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steps">Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remember-to-monitor-with-grafana">Remember to Monitor with Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#book-highlites-on-kubeslate">Book highlites on kubeslate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#microk8s">microk8s</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#restarting">Restarting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Ref</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="k8s/index.html">K8S Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="k8s/k8s_intro.html">Kubernetes Intro</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#what-is-k8s">What is k8s?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#why-k8s">WHY K8S?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#declarative">Declarative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#myths">Myths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#compare-swarm">Compare Swarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#k8s-architecture">k8s Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8s_intro.html#references">References</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/k8s_intro.html#what-is-kubernetes-kubernetes-introduction-kubernetes-tutorial-for-beginners-edureka">What Is Kubernetes | Kubernetes Introduction | Kubernetes Tutorial For Beginners | Edureka</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/minikube.html">Minikube Up and Running</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#jose-host">jose host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#virtual-box">Virtual Box</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#install">Install</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#kubectl">kubectl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#minikube">minikube</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#starting">STARTING</a></li>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#kubctl-context">kubctl context</a></li>
+<li class="toctree-l4"><a class="reference internal" href="k8s/minikube.html#sample-commands">Sample commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#minikube-docker-local-to-vm">minikube docker local to VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#create-a-makefile">Create a Makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#nodeport">NodePort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/minikube.html#kubectl-run">kubectl run</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/cookbook.html">Examining My Cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#context">Context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#kubectl">Kubectl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#dashboard">Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#docker-level">Docker Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/cookbook.html#exec-containers">Exec Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/helm.html">Helm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/helm.html#understanding-helm">Understanding Helm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/helm.html#docker-compose-similar">Docker Compose Similar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="k8s/k8sAWS.html">Book Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8sAWS.html#docker-containers">Docker Containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="k8s/k8sAWS.html#container-engines">Container Engines</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="k8s/k8sAWS.html#k8s-lexicon">K8s lexicon</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">juphub</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Learning Plan</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/learningPlan.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="learning-plan">
+<h1>Learning Plan<a class="headerlink" href="#learning-plan" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="books">
+<h2>Books<a class="headerlink" href="#books" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kubernetes-on-aws">
+<h3>Kubernetes on AWS<a class="headerlink" href="#kubernetes-on-aws" title="Permalink to this headline">¶</a></h3>
+<p>https://github.com/PacktPublishing/Kubernetes-on-AWS</p>
+<div class="section" id="overview-of-the-book">
+<h4>Overview of the Book<a class="headerlink" href="#overview-of-the-book" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Google wanted a container scheduler</p>
+<ul class="simple">
+<li><p>originally Borg.</p></li>
+</ul>
+</li>
+<li><p>leverages docker and etcd</p></li>
+<li><p>written in GO</p></li>
+</ol>
+<p>Why do I need a k8s cluster?</p>
+<ol class="simple">
+<li><p>self-healing …</p></li>
+</ol>
+<p>Containers</p>
+<ol class="simple">
+<li><p>came from the chroot syscall</p></li>
+<li><p>used in sandboxing</p></li>
+<li><p>cgroups, controlgroups</p>
+<ul class="simple">
+<li><p>interface for controlling a group of processes</p></li>
+<li><p>resource utilization limits (mem, cpu, I/O)</p></li>
+<li><p>snapshot and restore</p></li>
+</ul>
+</li>
+<li><p>Namespaces</p>
+<ul class="simple">
+<li><p>Mount, Users, PIrD, Network etc.</p></li>
+</ul>
+</li>
+<li><p>Docker simplifies these details</p>
+<ul class="simple">
+<li><p>simple to use and understand abstraction</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>k8s is fundamentally a work scheduler for a cluster of computers</p></li>
+<li><p>move from manual human processes to encoded operational knowledge</p></li>
+<li><p>current state (control loop) –&gt; desired state</p></li>
+<li><p>declarative versus imparative</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="concepts">
+<h3>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>pods == linked containers</p>
+<ul>
+<li><p>each pod has unique IP address and network namespace shared by all containers within the pod.</p></li>
+<li><p>containers in your pod have a shared lifecycle.</p></li>
+</ul>
+</li>
+<li><p>labels</p>
+<ul>
+<li><p>can be added to resource - like pods for example.</p></li>
+<li><p>flexible</p></li>
+<li><p>useful for selectors, etc  - just like AWS labels</p></li>
+<li><p>key-value pairs</p></li>
+</ul>
+</li>
+</ul>
+<p>more about effective labeling can be found here:
+https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/</p>
+<ul class="simple">
+<li><p>replica sets</p>
+<ul>
+<li><p>resource that templates the creation of pods</p></li>
+<li><p>desired replicas</p></li>
+<li><p>pods are ephemeral</p>
+<ul>
+<li><p>can be evicted</p></li>
+</ul>
+</li>
+<li><p>replica set - used to be called ReplicationController</p></li>
+</ul>
+</li>
+<li><p>Deployments –&gt; use replica sets ?</p>
+<ul>
+<li><p>we manage deployments</p></li>
+</ul>
+</li>
+<li><p>Services</p>
+<ul>
+<li><p>SERVICE DISCOVERY FOR ACCESSING</p></li>
+<li><p>service can define a lebel selector - to refer to a group of pods</p></li>
+<li><p>stable DNS name - and associated IP address - round-robins to our pods</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="helm">
+<h2>Helm<a class="headerlink" href="#helm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="helm-cheat">
+<h3>Helm Cheat<a class="headerlink" href="#helm-cheat" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">ls</span>
+<span class="n">helm</span> <span class="n">install</span>
+<span class="n">helm</span> <span class="n">delete</span>
+
+<span class="n">helm</span> <span class="n">fetch</span> <span class="o">--</span><span class="n">untar</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="helm-installation">
+<h3>Helm Installation<a class="headerlink" href="#helm-installation" title="Permalink to this headline">¶</a></h3>
+<p>Visit https://github.com/kubernetes/helm/releases to download the version you need for your platform.</p>
+<p>helm init</p>
+</div>
+<div class="section" id="helm-installing-a-chart">
+<h3>helm installing a chart<a class="headerlink" href="#helm-installing-a-chart" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="resource">
+<h4>Resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h4>
+<p>Helm charts for at https://hub.kubeapps.com/. As well</p>
+<p>Before you install a chart, you will need to know three things:</p>
+<ul class="simple">
+<li><p>The name of the chart you want to install</p></li>
+<li><p>The name you will give to this release (If you omit this, Helm will create a random name for this release)</p></li>
+<li><p>The namespace on the cluster you want to install the chart into (If you omit this, Helm will use the default namespace)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">repo</span> <span class="nb">list</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ref">
+<h4>Ref<a class="headerlink" href="#ref" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>/opt/juphub/labs/01-helm/example</p></li>
+<li><p>/opt/juphub/labs/03-helm-simple/product-stack/charts/debugger</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="helm-values-yaml">
+<h2>Helm values.yaml<a class="headerlink" href="#helm-values-yaml" title="Permalink to this headline">¶</a></h2>
+<p>Lots of stuff can get specified in the values.yaml</p>
+<ul class="simple">
+<li><p>the docker image</p></li>
+<li><p>the service IP type (usually: ClusterIP)</p></li>
+<li><p>the PORT</p></li>
+<li><p>is an ingress controller used and how</p></li>
+<li><p>resource limits</p></li>
+<li><p>nodeSelector - specify which node types</p></li>
+<li><p>tolerations</p></li>
+<li><p>affinity</p></li>
+<li><p>pod labels</p></li>
+</ul>
+<p>Alternately; there can be very simple values.yaml files fith hardly anything in them</p>
+<div class="section" id="excerpt">
+<h3>Excerpt<a class="headerlink" href="#excerpt" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="p">:</span>
+  <span class="n">repository</span><span class="p">:</span> <span class="n">tbutzer</span><span class="o">/</span><span class="n">bash</span><span class="o">-</span><span class="n">tester</span>
+  <span class="n">tag</span><span class="p">:</span> <span class="n">latest</span>
+  <span class="n">pullPolicy</span><span class="p">:</span> <span class="n">IfNotPresent</span>
+
+<span class="n">service</span><span class="p">:</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">ClusterIP</span>
+  <span class="n">port</span><span class="p">:</span> <span class="mi">9999</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="helm-chart-yaml">
+<h2>Helm Chart.yaml<a class="headerlink" href="#helm-chart-yaml" title="Permalink to this headline">¶</a></h2>
+<p>Seems to be more descriptive - TBD</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apiVersion</span><span class="p">:</span> <span class="n">v1</span>
+<span class="n">appVersion</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="n">description</span><span class="p">:</span> <span class="n">bash</span> <span class="k">with</span> <span class="n">network</span> <span class="n">discovery</span> <span class="n">tools</span>
+<span class="n">home</span><span class="p">:</span> <span class="n">tbd</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">debugger</span>
+<span class="n">fullname</span><span class="p">:</span> <span class="n">simple_debugger</span>
+<span class="n">version</span><span class="p">:</span> <span class="mf">0.2</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="helm-templates-directory">
+<h2>Helm templates directory<a class="headerlink" href="#helm-templates-directory" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="service-yaml">
+<h3>service.yaml<a class="headerlink" href="#service-yaml" title="Permalink to this headline">¶</a></h3>
+<p>Defines the service</p>
+<ul class="simple">
+<li><p>Kind: Service</p></li>
+<li><p>metadata:</p>
+<ul>
+<li><p>name</p></li>
+<li><p>originating chart</p></li>
+<li><p>release and heritage</p></li>
+</ul>
+</li>
+<li><p>spec:</p>
+<ul>
+<li><p>type</p></li>
+<li><p>ports</p></li>
+<li><p>selector</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="deployment-yaml">
+<h3>deployment.yaml<a class="headerlink" href="#deployment-yaml" title="Permalink to this headline">¶</a></h3>
+<p>Defines the deployment</p>
+<ul class="simple">
+<li><p>Kind: Deployment</p></li>
+<li><p>metadata:</p>
+<ul>
+<li><p>name chart full name release etc</p></li>
+</ul>
+</li>
+<li><p>spec:</p>
+<ul>
+<li><p>replicas</p></li>
+<li><p>selector matching</p></li>
+<li><p>template: ??</p></li>
+<li><p>spec (subspec?)</p>
+<ul>
+<li><p>serviceAccountName - ??</p></li>
+<li><p>containers: {{ that make up the service from values }}</p>
+<ul>
+<li><p>images  {{ obtained via variables }}</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="helm-helpers-and-rbac-more-to-come">
+<h2>Helm helpers and RBAC more to come …<a class="headerlink" href="#helm-helpers-and-rbac-more-to-come" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>RBAC overview video - nice:
+https://www.youtube.com/watch?v=CnHTCTP8d48</p></li>
+</ul>
+</div>
+<div class="section" id="kubeslate-helm-example">
+<h2>Kubeslate Helm Example<a class="headerlink" href="#kubeslate-helm-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Ref<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>/opt/juphub/labs/01-helm/example</p>
+</div>
+<div class="section" id="steps">
+<h3>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">juphub</span><span class="o">/</span><span class="n">labs</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">helm</span><span class="o">/</span><span class="n">example</span>
+
+<span class="n">make</span> <span class="n">install</span>
+
+<span class="n">kubectl</span> <span class="n">get</span> <span class="n">svc</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">default</span>       <span class="n">my</span><span class="o">-</span><span class="n">slate</span><span class="o">-</span><span class="n">kubeslate</span>     <span class="n">ClusterIP</span>   <span class="mf">10.152</span><span class="o">.</span><span class="mf">183.149</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>        <span class="mi">80</span><span class="o">/</span><span class="n">TCP</span>              <span class="mi">4</span><span class="n">s</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>firefox 10.152.183.149</p></li>
+</ul>
+</div>
+<div class="section" id="remember-to-monitor-with-grafana">
+<h3>Remember to Monitor with Grafana<a class="headerlink" href="#remember-to-monitor-with-grafana" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>kubectl cluster-info | grep Graf</p></li>
+<li><p>open the link via the proxy</p></li>
+<li><p>view the cluster and te pods</p></li>
+</ul>
+</div>
+<div class="section" id="book-highlites-on-kubeslate">
+<h3>Book highlites on kubeslate<a class="headerlink" href="#book-highlites-on-kubeslate" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="acknowledgements">
+<h4>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h4>
+<p>Robinson, Ed. Kubernetes on AWS: Deploy and manage production-ready Kubernetes clusters on AWS . Packt Publishing. Kindle Edition.</p>
+<ul class="simple">
+<li><p>helm repo list</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NAME</span>            <span class="n">URL</span>
+<span class="n">stable</span>          <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">charts</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">googleapis</span><span class="o">.</span><span class="n">com</span>
+<span class="n">local</span>           <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8879</span><span class="o">/</span><span class="n">charts</span>
+<span class="n">jupyterhub</span>      <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">jupyterhub</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">helm</span><span class="o">-</span><span class="n">chart</span><span class="o">/</span>
+<span class="n">errm</span>            <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">charts</span><span class="o">.</span><span class="n">errm</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">uk</span>
+<span class="n">pangeo</span>          <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pangeo</span><span class="o">-</span><span class="n">data</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">helm</span><span class="o">-</span><span class="n">chart</span><span class="o">/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>$ helm install –name=my-slate errm/kubeslate</p></li>
+<li><p>helm install –name labeled-slate –set podLabels.hello=world errm/kubeslate</p></li>
+<li><p>kubectl get pods -l hello=world</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="microk8s">
+<h2>microk8s<a class="headerlink" href="#microk8s" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="restarting">
+<h3>Restarting<a class="headerlink" href="#restarting" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>Ref<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>10-microk8s</p>
+<p>Makefile</p>
+<p>snap install - use the docker version stable channel 1.13</p>
+<p>see makefile</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="k8s/index.html" class="btn btn-neutral float-right" title="K8S Details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="monitor.html" class="btn btn-neutral float-left" title="Monitoring K8s" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
