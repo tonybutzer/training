@@ -3,14 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to juphub's documentation!
+Welcome to Training's documentation!
 ==================================
+
+Hello from Tony
++++++++++++++++
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    begin.md
+   monitor.md
 
 Indices and tables
 ==================
