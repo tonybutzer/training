@@ -23,6 +23,15 @@ services:
     volumes:
       - /opt/jup/juphub/docs/build/html:/usr/share/nginx/html
 
+  djup:
+    image: nginx:alpine
+    labels:
+      - traefik.frontend.rule=PathPrefixStrip:/djup
+      - traefik.port=80
+      - traefik.enable=true
+    volumes:
+      - /opt/jup/djup/docs/build/html:/usr/share/nginx/html
+
   training:
     image: nginx:alpine
     labels:
