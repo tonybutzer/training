@@ -5,7 +5,7 @@ html:
            ${Image} sphinx-build source build/html
 
 webServer:
-	docker run --name jup-nginx -p 80:80 -v `pwd`/build/html:/usr/share/nginx/html:ro -d nginx
+	docker run --name train-nginx -p 8080:80 -v `pwd`/build/html:/usr/share/nginx/html:ro -d nginx
 
 
 git:
